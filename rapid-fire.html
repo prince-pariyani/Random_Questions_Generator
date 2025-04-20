@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rapid Fire Questions - Random Questions & Letters</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        (function () {
+          const theme = localStorage.getItem('theme');
+          if (theme === 'dark') {
+            document.body.classList.add('dark-theme');
+          }
+        })();
+      </script>
+      
+    <link href="styles.css" rel="stylesheet">
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">Random Questions</a>
+            <div class="nav-links">
+                 <!-- Updated nav links -->
+                <a href="index.html" class="nav-link">
+                    <i data-feather="home"></i>
+                    Home
+                </a>
+                <a href="my-answers.html" class="nav-link">
+                    <i data-feather="book-open"></i>
+                    My Answers
+                </a>
+                <a href="truth-or-dare.html" class="nav-link">
+                    <i data-feather="home"></i>
+                    Truth or Dare
+                </a>
+                <a href="letter.html" class="nav-link">
+                    <i data-feather="mail"></i>
+                    Letter to Friend
+                </a>
+                <a href="rapid-fire.html" class="nav-link">
+                    <i data-feather="fast-forward"></i>
+                    Rapid Fire
+                </a>
+                
+            </div>
+            <!-- Add Theme Toggle Button -->
+            <button id="theme-toggle-button" class="theme-toggle">
+                <i data-feather="moon"></i> <!-- Icon will change -->
+            </button>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="rapid-fire-container">
+            <h1 class="title">Rapid Fire!</h1>
+            <!-- Loading Bar Timer -->
+            <div class="timer-bar-container hidden">
+                <div class="timer-bar"></div>
+            </div>
+            <p id="rapid-fire-question" class="question-text">Get Ready...</p>
+            <div class="rapid-fire-options hidden">
+                <button id="rapid-fire-option1" class="option-button"></button>
+                <button id="rapid-fire-option2" class="option-button"></button>
+            </div>
+             <div class="rapid-fire-actions">
+                <button id="restart-rapid-fire" class="hidden">Restart</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        feather.replace();
+    </script>
+</body>
+</html>
+
+                

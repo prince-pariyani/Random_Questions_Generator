@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Letter to Friend - Random Questions & Letters</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        (function () {
+          const theme = localStorage.getItem('theme');
+          if (theme === 'dark') {
+            document.body.classList.add('dark-theme');
+          }
+        })();
+      </script>
+      
+    <link href="styles.css" rel="stylesheet">
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">Random Questions</a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">
+                    <i data-feather="home"></i>
+                    Home
+                </a>
+                <a href="my-answers.html" class="nav-link">
+                    <i data-feather="book-open"></i>
+                    My Answers
+                </a>
+                <a href="truth-or-dare.html" class="nav-link">
+                    <i data-feather="home"></i>
+                    Truth or Dare
+                </a>
+                <a href="letter.html" class="nav-link">
+                    <i data-feather="mail"></i>
+                    Letter to Friend
+                </a>
+                <a href="rapid-fire.html" class="nav-link">
+                    <i data-feather="fast-forward"></i>
+                    Rapid Fire
+                </a>
+                
+            </div>
+            <!-- Add Theme Toggle Button -->
+            <button id="theme-toggle-button" class="theme-toggle">
+                <i data-feather="moon"></i> <!-- Icon will change -->
+            </button>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="letter-container">
+            <h1 class="title">Write a Letter for your loved ones</h1>
+            <textarea placeholder="Write your heartfelt or funny letter here..."></textarea>
+            <div class="letter-actions">
+                <button class="copy-button">Copy Text</button>
+                <button class="download-button">Download Letter</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        feather.replace();
+    </script>
+</body>
+</html> 

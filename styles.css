@@ -1,0 +1,652 @@
+/* Define Light Theme Variables (Default) */
+:root {
+    --primary: #FF6B6B;
+    --secondary: #4ECDC4;
+    --accent: #FFE66D;
+    --background: #F7FFF7; /* Light background */
+    --card-bg: #FFFFFF;    /* White cards */
+    --text: #2D3748;       /* Dark text */
+    --text-muted: #718096; /* Muted text */
+    --border-color: #e2e8f0; /* Light border */
+    --navbar-bg-start: var(--primary);
+    --navbar-bg-end: #ff8e8e;
+    --button-text: white;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+    --scrollbar-thumb: linear-gradient(var(--primary), var(--secondary));
+    --scrollbar-track: #f1f1f1;
+}
+
+/* Define Dark Theme Variables */
+body.dark-theme {
+    --primary: #ff8e8e; /* Lighter primary for dark */
+    --secondary: #6fddd7; /* Lighter secondary */
+    --accent: #f9d71c;  /* Slightly adjusted accent */
+    --background: #1a202c; /* Dark background */
+    --card-bg: #2d3748;    /* Darker cards */
+    --text: #edf2f7;       /* Light text */
+    --text-muted: #a0aec0; /* Muted light text */
+    --border-color: #4a5568; /* Darker border */
+    --navbar-bg-start: #4a5568; /* Darker navbar */
+    --navbar-bg-end: #2d3748;
+    --button-text: #1a202c; /* Dark text on light buttons */
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.4); /* Darker shadow */
+    --scrollbar-thumb: linear-gradient(var(--secondary), var(--primary));
+    --scrollbar-track: #2d3748;
+}
+
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styles - Use Variables */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--background); /* Use variable */
+    color: var(--text);            /* Use variable */
+    line-height: 1.6;
+    min-height: 100vh;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth theme transition */
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Navbar - Use Variables */
+.navbar {
+    /* Use gradient with variables */
+    background: linear-gradient(135deg, var(--navbar-bg-start), var(--navbar-bg-end));
+    color: white; /* Keep navbar text white for contrast, or use a var if needed */
+    padding: 1rem;
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    transition: background 0.3s ease;
+}
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo {
+    /* Keep white or use a specific navbar text variable */
+    color: white;
+    text-decoration: none;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    transition: var(--transition);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.logo:hover {
+    transform: scale(1.05);
+}
+.nav-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+.nav-link {
+    color: white; /* Keep white or use var */
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    transition: var(--transition);
+}
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Keep light hover */
+    transform: translateY(-2px);
+}
+.nav-link i {
+    width: 18px; /* Ensure icons have consistent size */
+    height: 18px;
+}
+
+/* Theme Toggle Button Style */
+.theme-toggle {
+    background: none;
+    border: none;
+    color: white; /* Match navbar text */
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+.theme-toggle:hover {
+     background-color: rgba(255, 255, 255, 0.2);
+}
+.theme-toggle i {
+    width: 20px;
+    height: 20px;
+}
+
+/* Main Content Area */
+main {
+    padding: 2rem 0;
+    animation: fadeIn 0.5s ease-out;
+}
+.title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: var(--text); /* Use variable */
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.title::after {
+    /* Gradient for underline can use theme vars */
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    border-radius: 2px;
+}
+
+/* Categories Grid (index.html) */
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Smaller min size */
+    gap: 1.5rem;
+    padding: 1rem;
+}
+.category-card {
+    background-color: var(--card-bg);
+    border: none;
+    border-radius: 15px;
+    padding: 1.5rem; /* Adjusted padding */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+.category-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3));
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.category-card:hover::before {
+    opacity: 1;
+}
+.category-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+.category-card i {
+    width: 40px; /* Adjusted size */
+    height: 40px;
+    color: var(--primary);
+    z-index: 2;
+    margin-bottom: 0.5rem;
+}
+.category-card span {
+    font-size: 1.1rem; /* Adjusted size */
+    font-weight: 600;
+    z-index: 2;
+}
+
+/* Generic Question/Answer Container */
+.question-container, .truth-dare-container, .rapid-fire-container, .letter-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    animation: slideUp 0.5s ease-out;
+}
+.question-text {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--text);
+    line-height: 1.4;
+    min-height: 50px; /* Prevent layout shifts */
+}
+
+/* Question Page Specifics */
+.answer-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+textarea {
+    width: 100%;
+    min-height: 150px; /* Adjusted height */
+    padding: 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    resize: vertical; /* Allow vertical resize */
+    font-family: inherit;
+    font-size: 1rem;
+    background-color: var(--card-bg);
+    color: var(--text);
+    transition: var(--transition), background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 20%, transparent);
+}
+.question-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-wrap: wrap; /* Allow wrapping */
+}
+.change-question-button {
+    background: linear-gradient(135deg, var(--secondary), color-mix(in srgb, var(--secondary) 80%, white));
+    flex-grow: 0; /* Don't expand */
+}
+.change-question-button:hover {
+    background: linear-gradient(135deg, color-mix(in srgb, var(--secondary) 80%, white), var(--secondary));
+}
+
+/* General Button Styles */
+button {
+    background: linear-gradient(135deg, var(--primary), color-mix(in srgb, var(--primary) 80%, white));
+    color: var(--button-text);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition), background 0.3s ease;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: inline-flex; /* For icon alignment */
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem; /* Space between text and icon */
+}
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+body.dark-theme button:hover {
+     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+button:active {
+    transform: translateY(0);
+}
+button i {
+    width: 18px;
+    height: 18px;
+}
+
+
+/* Results Display */
+.result {
+    background-color: color-mix(in srgb, var(--secondary) 10%, var(--background));
+    border-left: 5px solid var(--secondary);
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-top: 2rem;
+    animation: fadeIn 0.5s ease-out;
+    transition: background-color 0.3s ease;
+}
+.result h2 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+.result p {
+    margin-bottom: 1rem;
+}
+/* Button inside result */
+.result button {
+     background: linear-gradient(135deg, var(--secondary), color-mix(in srgb, var(--secondary) 80%, white));
+     font-size: 0.9rem;
+}
+
+/* My Answers Page */
+.answers-header {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1.5rem;
+    padding: 0 1rem;
+}
+.clear-history-button {
+    background: linear-gradient(135deg, #f44336, #d32f2f);
+    font-size: 0.9rem;
+    padding: 0.6rem 1.2rem;
+}
+.clear-history-button:hover {
+    background: linear-gradient(135deg, #d32f2f, #f44336);
+}
+.answers-grid {
+    display: grid;
+    gap: 1.5rem;
+}
+.answer-card {
+    background-color: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    animation: slideUp 0.5s ease-out;
+}
+.answer-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+.answer-card h2 {
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+.answer-card .meta {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+}
+.answer-card p:not(.meta) {
+    margin-top: 0.5rem; /* Space between meta and answer */
+}
+.no-answers {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    margin-top: 2rem;
+    grid-column: 1 / -1; /* Span full grid width if needed */
+}
+
+/* Truth or Dare Page Styling */
+.truth-dare-container {
+    text-align: left;
+}
+#truth-dare-output {
+   margin-bottom: 2.5rem;
+}
+.truth-dare-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+}
+/* Styling for Truth/Dare Prefix */
+.question-type {
+    font-weight: bold;
+    margin-right: 0.5em;
+    display: inline-block; /* Ensures proper spacing */
+}
+.question-type.truth {
+    color: var(--secondary); /* Teal for Truth */
+}
+.question-type.dare {
+    color: #f57c00; /* Orange for Dare */
+}
+body.dark-theme .question-type.dare {
+    color: #ff9800; /* Lighter orange for dark */
+}
+/* Style the individual T/D buttons */
+#get-truth-button {
+     background: linear-gradient(135deg, var(--secondary), color-mix(in srgb, var(--secondary) 80%, white));
+}
+#get-truth-button:hover {
+    background: linear-gradient(135deg, color-mix(in srgb, var(--secondary) 80%, white), var(--secondary));
+}
+#get-dare-button {
+    background: linear-gradient(135deg, #f57c00, #ff9800); /* Orange */
+}
+#get-dare-button:hover {
+    background: linear-gradient(135deg, #ff9800, #f57c00);
+}
+#get-next-random-button {
+     background: linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent) 80%, black));
+     color: #333; /* Dark text on yellow */
+}
+body.dark-theme #get-next-random-button {
+    color: var(--text); /* Light text on dark yellow */
+}
+
+/* Rapid Fire Page Styling Updates */
+.rapid-fire-container {
+    text-align: left;
+    position: relative;
+}
+
+/* Loading Bar Timer Styles */
+.timer-bar-container {
+    width: 80%; /* Or adjust width as needed */
+    height: 10px; /* Height of the bar track */
+    background-color: var(--border-color); /* Use border color for track */
+    border-radius: 5px;
+    margin: 1rem auto 1.5rem auto; /* Center and add spacing */
+    overflow: hidden; /* Ensure inner bar stays contained */
+    transition: background-color 0.3s ease;
+}
+
+.timer-bar {
+    height: 100%;
+    width: 100%; /* Start full */
+    background: linear-gradient(90deg, var(--primary), var(--secondary)); /* Gradient fill */
+    border-radius: 5px;
+    /* Transition will be added/removed via JS for reset */
+}
+
+/* Add a class for the active transition */
+.timer-bar.active-timer {
+     transition: width 5s linear; /* Duration matches the time limit */
+}
+
+#rapid-fire-question {
+    font-size: 1.8rem;
+    min-height: 60px;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+/* Options Container */
+.rapid-fire-options {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+/* Option Buttons */
+.option-button {
+    background: linear-gradient(135deg, var(--secondary), var(--accent));
+    color: var(--text);
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    border-radius: 10px;
+    min-width: 150px;
+    text-transform: none;
+    letter-spacing: normal;
+    box-shadow: var(--shadow);
+}
+
+.option-button:hover {
+    background: linear-gradient(135deg, var(--accent), var(--secondary));
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Action Buttons Container */
+.rapid-fire-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+#restart-rapid-fire {
+     background: linear-gradient(135deg, var(--primary), #ff8e8e);
+}
+#restart-rapid-fire:hover {
+     background: linear-gradient(135deg, #ff8e8e, var(--primary));
+}
+
+/* Letter Page Styling */
+.letter-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-wrap: wrap; /* Allow wrapping */
+}
+/* Share Dropdown Styles */
+.share-dropdown {
+    position: relative;
+    display: inline-block;
+}
+.share-button {
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+}
+.share-options {
+    position: absolute;
+    bottom: 100%; /* Position above the button */
+    right: 0;
+    background: var(--card-bg);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    padding: 0.5rem;
+    margin-bottom: 0.5rem; /* Space between button and dropdown */
+    display: none;
+    z-index: 100;
+    min-width: 150px;
+    animation: fadeIn 0.2s ease-out;
+    transition: background-color 0.3s ease;
+}
+.share-dropdown:hover .share-options {
+    display: block;
+}
+.share-option {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    color: var(--text);
+    text-decoration: none;
+    border-radius: 5px;
+    transition: var(--transition);
+    white-space: nowrap; /* Prevent wrapping */
+}
+.share-option:hover {
+    background-color: color-mix(in srgb, var(--text) 5%, var(--card-bg));
+}
+.share-option i {
+    width: 18px;
+    height: 18px;
+}
+.whatsapp:hover { color: #25D366; }
+.instagram:hover { color: #E4405F; }
+.snapchat:hover { color: #FFFC00; text-shadow: 0 0 1px #333; /* Improve visibility */}
+.twitter:hover { color: #1DA1F2; }
+
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Utility Classes */
+.hidden {
+    display: none !important; /* Use important if needed to override */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-links {
+        gap: 0.5rem; /* Smaller gap */
+        justify-content: center; /* Center links if they wrap */
+    }
+    .nav-link {
+        padding: 0.4rem 0.8rem; /* Smaller padding */
+        font-size: 0.9rem; /* Slightly smaller font */
+    }
+    .title {
+        font-size: 2rem;
+    }
+    .categories-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Adjust minmax */
+        gap: 1rem;
+    }
+    .question-container, .truth-dare-container, .rapid-fire-container, .letter-container {
+        padding: 1.5rem;
+    }
+    .question-text, #rapid-fire-question, #truth-dare-output {
+        font-size: 1.3rem;
+    }
+    button {
+        font-size: 0.9rem;
+        padding: 0.6rem 1.2rem;
+    }
+    .letter-actions, .truth-dare-actions, .rapid-fire-actions, .question-actions {
+        justify-content: center; /* Center actions on mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    .categories-grid {
+        grid-template-columns: 1fr 1fr; /* Force 2 columns */
+    }
+     .nav-links {
+        font-size: 0.8rem; /* Even smaller */
+        gap: 0.3rem;
+    }
+    .nav-link {
+        padding: 0.3rem 0.6rem;
+    }
+     .title {
+        font-size: 1.8rem;
+    }
+}
+
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px; /* For horizontal scrollbars if any */
+}
+::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    filter: brightness(1.1);
+}
